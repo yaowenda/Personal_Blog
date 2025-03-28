@@ -1,0 +1,9 @@
+data/
+test/
+pages/
+scripts/
+.next/
+.github/
+out/
+src/components/
+static/

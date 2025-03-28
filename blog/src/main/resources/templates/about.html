@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于作者</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+    
+</head>
+<body>
+    <!--导航栏-->
+    <!--最顶部的黑色卡片-->
+    <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <!-- 导航栏 -->
+         <div class="ui container">
+            <div class="ui inverted secondary stackable menu middle aligned">
+                <div class="ui center middel aligned">
+                    <h2 clss="ui teal header item">Blog</h2>
+                </div>
+                <a href="" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+                <div class="right m-item item m-mobile-hide">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="搜索...">
+                        <i class="search link icon"></i> 
+                    </div>
+                </div>
+         </div>
+        </div>
+         <a href="" class="ui menu toggle black icon button m-top-right m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中间部分-->
+    <div class="m-container top m-padded-tb-large">
+        <div class="ui  container">
+            <div class="ui stackable grid">
+                <!--左边部分-->
+                <div class="eleven wide column">
+                    <!--头部-->
+                    <div class="ui attached  segment">
+                        <div class="ui two column grid middle aligned">
+                            <div class="ten wide column">
+                                <h3 class="ui teal header">关于我</h3>
+                            </div>
+
+                            <div class="six wide column right aligned">
+                                <a href="https://github.com/yaowenda" class="ui github circular icon button" data-content="点击跳转github主页"><i class="github icon"></i></a>
+                                <a href="#" class="ui weixinButton circular icon button"><i class="weixin icon"></i></a>
+                                <a href="#" class="ui qq circular icon button"><i class="qq icon" data-content="1046748784"></i></a>
+                            </div>
+
+                            <div class="ui weixin flowing popup transition hidden">
+                                <div class="ui orange basic label">
+                                    <div class="ui images" style="font-size: 14px;">
+                                        <div class="image">
+                                            <img src="../static/images/wechat.jpg" alt="" class="ui rounded bordered image" style="width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+            
+            
+            <!--内容区域-->
+            <div class="ui attached padded segment">
+                <h2 class="ui center aligned header">姚文达</h2>
+                <br>
+                <div class="m-padded-lr m-padded-tb m-text" id="content">
+                    2004年出生，网络空间安全专业
+                </div>
+                
+             </div>
+             <!--图片区域-->
+            <div class="ui attached segment">
+                <img src="https://picsum.photos/800/450" alt="" class="ui rounded fluid image">
+            </div>
+        </div>
+
+                <!--右边的top-->
+                <div class="five wide column">
+                    <!--曾获荣誉-->
+                    <div class="ui top attached segments">
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid">
+                                <div class="column m-text-head">
+                                    <i class="chess queen icon"></i>曾获荣誉
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segment">
+                            <div class="ui vertical fluid menu">
+                                <a href="" class="item m-text-head">
+                                    美国大学生数学建模国际二等奖
+                                </a>
+                                <a href="" class="item m-text-head">
+                                    2024年国家奖学金
+                                </a>
+                                <a href="" class="item m-text-head">
+                                    挑战杯黑龙江省银奖
+                                </a>
+                                <a href="" class="item m-text-head">
+                                    “互联网+”校三等奖
+                                </a>
+                                <a href="" class="item m-text-head">
+                                    大英赛校三等奖
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--标签-->
+                    <div class="ui segments m-margin-top-large">
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid">
+                                <div class="column m-text-head">
+                                    <i class="tags icon"></i>标签
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segment">
+                            <button class="ui primary button m-margin-buttom-mini">编程</button>
+                            <button class="ui secondary button m-margin-buttom-mini">学习</button>
+                            <button class="ui positive button m-margin-buttom-mini">英语</button>
+                            <button class="ui negative button m-margin-buttom-mini">努力</button>
+                            <button class="ui primary button m-margin-buttom-mini">网络安全</button>
+<!--                            <button class="ui secondary button m-margin-buttom-mini">学习</button>-->
+                        </div>
+                    </div>
+                    
+
+                    <!--学习内容-->
+                    <div class="ui attached segments m-margin-top-large">
+                        <div class="ui secondary segment m-text-head">
+                            <i class="pen square icon"></i>学习内容
+                        </div>
+                        <div class="ui attached segment">
+                            <button class="ui red button">Javascript</button>
+                            <button class="ui orange button m-margin-buttom-mini">Java</button>
+                            <button class="ui yellow button m-margin-buttom-mini">Python</button>
+                            <button class="ui olive button m-margin-buttom-mini">深度伪造检测</button>
+                            <button class="ui green button m-margin-buttom-mini">网络安全</button>
+                            <button class="ui teal button m-margin-buttom-mini">爬虫</button>
+                            <button class="ui blue button m-margin-buttom-mini">开发</button>
+<!--                            <button class="ui violet button m-margin-buttom-mini"></button>-->
+                            <button class="ui purple button m-margin-buttom-mini">Vue</button>
+                            <button class="ui pink button m-margin-buttom-mini">运维</button>
+<!--                            <button class="ui brown button m-margin-buttom-mini">Brown</button>-->
+<!--                            <button class="ui grey button m-margin-buttom-mini">Grey</button>-->
+<!--                            <button class="ui black button m-margin-buttom-mini">Black</button>-->
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+    </div>
+
+    <!--底部-->
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="ui three wide column">
+                    <div class="ui item">
+                        <img src="../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 100px">
+                    </div>
+                </div>
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                    </div>
+                </div>
+                
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">Email: 1046748784@qq.com</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">QQ: 1046748784</a>
+                    </div>
+                </div>
+                <div class="ui seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">关于网站</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的博客，我的思考</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-mini">Disigned by Yaowenda</p>
+        </div>
+    </footer>
+
+    <!--/*/<th:blcok th:replace="_fragments :: script">/*/-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <!--/*/</th:blcok>/*/-->
+
+<script>
+    $('.menu.toggle').click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.qq').popup({
+        
+    });
+    $('.github').popup({
+        
+    });
+
+    $('.weixinButton').popup({
+        popup: $('.weixin.popup'),
+        position : 'bottom center'
+    });
+</script>
+</body>
+</html>

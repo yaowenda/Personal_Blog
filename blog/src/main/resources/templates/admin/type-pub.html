@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类新增</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+</head>
+<body>
+    <!--导航栏-->
+    <!--最顶部的黑色卡片-->
+    <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <!-- 导航栏 -->
+         <div class="ui container">
+            <div class="ui inverted secondary stackable menu middle aligned">
+                <div class="ui center middle aligned">
+                    <h2 clss="ui teal header item">管理</h2>
+                </div>
+                <a href="" class="m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="" class=" m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img class="ui avatar image" src="https://picsum.photos/seed/picsum/200?image=1002" alt="">
+                            姚文达
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+         </div>
+        </div>
+         <a href="" class="ui menu toggle black icon button m-top-right m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中间部分-->
+    <div class="m-container-small m-padded-tb-large">
+        <div class="ui container">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+<!--            <div class="ui negative message" th:if="${#strings.isEmpty(message)}">-->
+<!--                <i class="close icon"></i>-->
+<!--                <div class="header">提示：</div>-->
+<!--                <p th:text="${message}">错误信息</p>-->
+<!--            </div>-->
+            <form action="#" method="post"
+                  th:action="${type.id} == null ? @{/admin/types} : @{/admin/types/{id}(id=${type.id})}"
+                  th:object="${type}"
+                  class="ui form">
+                <input type="hidden" name="id" th:value="*{id}">
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">名称</label>
+                        <input type="text" name="name" placeholder="分类名称" th:field="*{name}">
+                    </div>
+                </div>
+                <div class="ui error message"></div>
+
+
+
+                <div class="ui container right aligned">
+                    <button class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button class="ui submit primary button">提交</button>
+                </div>
+
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    
+
+    <!--底部-->
+    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="ui three wide column">
+                    <div class="ui item">
+                        <img src="../../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 100px">
+                    </div>
+                </div>
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                    </div>
+                </div>
+                
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">Email: 1046748784@qq.com</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">QQ: 1046748784</a>
+                    </div>
+                </div>
+                <div class="ui seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">关于网站</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的博客，我的思考</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-mini">Disigned by Yaowenda</p>
+        </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+<script src="../../static/lib/editormd/editormd.min.js">
+
+</script>
+
+<script>
+    var testEditor;
+
+    $(function() {
+        testEditor = editormd("md-content", {
+            width   : "100%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "../../static/lib/editormd/lib/"
+        });
+        
+        /*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+    });
+</script>
+
+<script>
+    $('.menu.toggle').click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown')
+    .dropdown({
+        on : 'hover'
+    });
+
+    $('.ui.form').form({
+        fields : {
+            title : {
+                identifier : 'name',
+                rules : [{
+                    type : 'empty',
+                        prompt : '请输入分类'
+                }]
+            }
+
+        }
+    });
+
+    
+</script>
+</body>
+</html>

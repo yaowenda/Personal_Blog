@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.blog.dao.BlogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.blog.entity.Blog">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="first_picture" property="firstPicture" />
+        <result column="flag" property="flag" />
+        <result column="views" property="views" />
+        <result column="appreciation" property="appreciation" />
+        <result column="share_statement" property="shareStatement" />
+        <result column="commentabled" property="commentabled" />
+        <result column="published" property="published" />
+        <result column="recommened" property="recommened" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="type_id" property="typeId" />
+        <result column="user_id" property="userId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, content, first_picture, flag, views, appreciation, share_statement, commentabled, published, recommened, create_time, update_time, type_id, user_id
+    </sql>
+
+    <!-- 保存博客 -->
+    <insert id="save" parameterType="com.example.blog.entity.Type" useGeneratedKeys="true" keyProperty="id">
+        insert into blog (title, content, first_picture, flag, views, appreciation, share_statement, commentabled, published, recommened, create_time, update_time, type_id, user_id)
+        values (#{title}, #{content}, #{firstPicture}, #{flag}, #{views}, #{appreciation}, #{shareStatement}, #{commentabled}, #{published}, #{recommened}, #{createTime}, #{updateTime}, #{typeId}, #{userId})
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!-- 根据ID查询博客 -->
+    <select id="findone" resultMap="BaseResultMap">
+        select id, title, content, first_picture, flag, views, appreciation, share_statement, commentabled, published, recommened, create_time, update_time, type_id, user_id
+        from blog
+        where id = #{id}
+    </select>
+
+<!--    &lt;!&ndash; 分页查询所有分类 &ndash;&gt;-->
+<!--    <select id="findAll" resultMap="BaseResultMap">-->
+<!--        select id, name-->
+<!--        from type-->
+<!--                 limit #{current}, #{size}-->
+<!--    </select>-->
+
+    <update id="updateBlog" parameterType="com.example.blog.entity.Blog">
+        update blog
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="firstPicture != null">first_picture = #{firstPicture},</if>
+            <if test="flag != null">flag = #{flag},</if>
+            <if test="views != null">views = #{views},</if>
+            <if test="appreciation != null">appreciation = #{appreciation},</if>
+            <if test="shareStatement != null">share_statement = #{shareStatement},</if>
+            <if test="commentabled != null">commentabled = #{commentabled},</if>
+            <if test="published != null">published = #{published},</if>
+            <if test="recommened != null">recommened = #{recommened},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="typeId != null">type_id = #{typeId},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 删除分类 -->
+    <delete id="delete">
+        delete from blog
+        where id = #{id}
+    </delete>
+
+    <select id="getTopTypes" resultType="java.util.Map">
+        SELECT
+            t.NAME type_id,
+            count( type_id ) count
+        FROM
+            blog b
+            LEFT JOIN type t ON t.id = b.type_id
+        GROUP BY
+            type_id
+            LIMIT 5;
+    </select>
+
+
+</mapper>

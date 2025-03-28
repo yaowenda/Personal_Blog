@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客管理</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+    <!--导航栏-->
+    <!--最顶部的黑色卡片-->
+    <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <!-- 导航栏 -->
+         <div class="ui container">
+            <div class="ui inverted secondary stackable menu middle aligned">
+                <div class="ui center middle aligned">
+                    <h2 clss="ui teal header item">管理</h2>
+                </div>
+                <a href="" class="m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="" class=" m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img class="ui avatar image" src="https://picsum.photos/seed/picsum/200?image=1002" alt="">
+                            姚文达
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+         </div>
+        </div>
+         <a href="" class="ui menu toggle black icon button m-top-right m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <a href="" th:href="@{/admin/blogs/input}" class="item">发布</a>
+            <a href="" th:href="@{/admin/blogs}" class="active teal item">管理</a>
+        </div>
+        
+
+    </div>
+
+    <!--中间部分-->
+    <div class="m-container-small m-padded-tb-large">
+        <div class="ui container">
+            <form action="#" method="post" class="ui secondary segment form" th:action="@{/admin/blogs}">
+                <div class="inline fields">
+                    <div class="field">
+                        <input type="text" name="title" placeholder="标题" th:value="${param.title}">
+                    </div>
+                    <div class="field">
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="typeId" th:value="${param.typeId}">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">分类</div>
+                            <div class="menu">
+                                <div th:each="type : ${types}" class="item" th:data-value="${type.id}" th:text="${type.name}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="recommened" id="recommened" th:checked="${param.recommened}">
+                            <label for="recommened">推荐</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <button class="ui teal button"><i class="search icon"></i>搜索</button>
+                        <a th:href="@{/admin/blogs}" class="ui red button"><i class="sync alternate icon"></i>清空</a>
+                    </div>
+                    
+                </div>
+            </form>
+
+            <table class="ui compact teal table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>类型</th>
+                        <th>状态</th>
+                        <th>推荐</th>
+                        <th>更新时间</th>
+                        <th>操作</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr th:each="blog,iterStat : ${page.records}"> <!--遍历了所有博客记录,每一条都是一个blog对象-->
+                        <td th:text="${iterStat.count + (page.current - 1) * page.size}">1</td>
+                        <td th:text="${blog.title}">刻意练习清单</td>
+                        <td th:text="${blog.type != null ? blog.type.name : ''}">认知升级</td>
+                        <td th:text="${blog.published} ? '已发布' : '草稿'">已发布</td>
+                        <td th:text="${blog.recommened} ? '是' : '否'">是</td>
+                        <td th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2025-02-08</td>
+                        <td>
+                            <a href="" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal button">编辑</a>
+                            <a href="" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red button">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="7">
+                            <div class="ui right floated pagination menu" th:if="${page.total > 0}">
+                                <a class="icon item" th:href="@{/admin/blogs(page=${page.current}-1)}" th:unless="${page.current == 1}">
+                                    <i class="left chevron icon"></i>
+                                </a>
+                                <a class="icon item" th:href="@{/admin/blogs(page=${page.current}+1)}" th:unless="${page.current == page.pages}">
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                            <a href="#" th:href="@{/admin/blogs/input}" class="ui left floated teal button">新增</a>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">操作成功</p>
+            </div>
+        </div>
+    </div>
+
+    <!--底部-->
+    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="ui three wide column">
+                    <div class="ui item">
+                        <img src="../../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 100px">
+                    </div>
+                </div>
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                    </div>
+                </div>
+                
+                <div class="ui three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">Email: 1046748784@qq.com</a>
+                        <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">QQ: 1046748784</a>
+                    </div>
+                </div>
+                <div class="ui seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">关于网站</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的博客，我的思考</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-mini">Disigned by Yaowenda</p>
+        </div>
+    </footer>
+
+    <!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+
+    <!--/*/</th:block>/*/-->
+
+
+
+<script>
+    $('.menu.toggle').click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown')
+    .dropdown({
+        on : 'hover'
+    });
+    $('.message .close')
+    .on('click', function() {
+        $(this)
+        .closest('.message')
+        .transition('fade')
+        ;
+    })
+    ;
+    
+    
+</script>
+</body>
+</html>

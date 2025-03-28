@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+
+<nav th:replace="_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <!-- 导航栏 -->
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu middle aligned">
+            <div class="ui center middle aligned">
+                <h2 clss="ui teal header item">Blog</h2>
+            </div>
+            <a href="" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="搜索...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="" class="ui menu toggle black icon button m-top-right m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="m-container-small">
+    <div class="ui error message m-padded-tb">
+        <div class="ui container">
+            <h2>404</h2>
+            <p>
+                抱歉，您访问的页面不存在。
+            </p>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<!--底部-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="ui three wide column">
+                <div class="ui item">
+                    <img src="../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 100px">
+                </div>
+            </div>
+            <div class="ui three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                    <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                    <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">用户故事</a>
+                </div>
+            </div>
+
+            <div class="ui three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">Email: 1046748784@qq.com</a>
+                    <a href="" class="item m-text-thin m-text-spaced m-opacity-mini">QQ: 1046748784</a>
+                </div>
+            </div>
+            <div class="ui seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">关于网站</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的博客，我的思考</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">Disigned by Yaowenda</p>
+    </div>
+</footer>
+
+</body>
+</html>
